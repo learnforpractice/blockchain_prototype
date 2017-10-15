@@ -33,6 +33,7 @@ class ProofOfWork(object):
 			if hashInt<self.target:
 				self.block.Hash = hash
 				self.block.Nonce = nonce
+				print()
 				return (nonce,hash)
 			else:
 				nonce+=1
