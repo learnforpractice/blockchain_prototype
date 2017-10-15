@@ -6,15 +6,11 @@ from typing import Dict, Tuple, List
 class Block(object):
     def __init__(self,data:bytes,prevBlockHash:bytes):
         self.Timestamp = int(time.time())
-        self.Data = data
+        assert isinstance(data,bytes)
+        self.Data = bytes(data)
         self.PrevBlockHash = prevBlockHash
-        self.SetHash()
-
-# SetHash calculates and sets block hash
-    def SetHash(self):
-        timestamp = int.to_bytes(self.Timestamp,8,'little')
-        headers = b''.join([self.PrevBlockHash,self.Data,timestamp])
-        self.Hash = hashlib.sha256(headers).digest()
+        self.Nonce = 0
+        self.Hash = b''
 
 # NewGenesisBlock creates and returns genesis Block
     def NewGenesisBlock():

@@ -12,6 +12,7 @@ class Blockchain:
         prevBlock = self.blocks[len(self.blocks)-1]
         newBlock = Block(data, prevBlock.Hash)
         self.blocks.append(newBlock)
+        return newBlock
 
     # NewBlockchain creates a new Blockchain with genesis Block
     def NewBlockchain(self):
